@@ -21,6 +21,7 @@ namespace WorkingWithVisualStudio.Models
             };
             foreach (var p in initialItems)
                 AddProduct(p);
+            products.Add("Error", null);
         }
         public IEnumerable<Product> Products => products.Values;
         public void AddProduct(Product p) => products.Add(p.Name, p);

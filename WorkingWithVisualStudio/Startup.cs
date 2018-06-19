@@ -31,6 +31,7 @@ namespace WorkingWithVisualStudio
             //    await context.Response.WriteAsync("Hello World!");
             //});
             app.UseStaticFiles();
+            app.UseBrowserLink();
             app.UseMvcWithDefaultRoute();
         }
     }
