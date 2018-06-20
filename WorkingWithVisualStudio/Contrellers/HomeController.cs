@@ -6,9 +6,20 @@ namespace WorkingWithVisualStudio.Contrellers
 {
     public class HomeController : Controller
     {
-
+        SimpleRepository repository = SimpleRepository.SharedRepository;
         public IActionResult Index()
-            => View(SimpleRepository.SharedRepository.Products
-                .Where(p => p?.Price < 50));
+            => View(repository.Products.Where(p => p?.Price < 50));
+
+        [HttpGet]
+        public IActionResult AddProduct() => View(new Product());
+
+        [HttpPost]
+        public IActionResult AddProduct(Product p)
+        {
+            repository.AddProduct(p);
+            return RedirectToAction("Index");
+        }
+
     }
+   
 }
